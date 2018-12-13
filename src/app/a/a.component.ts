@@ -8,23 +8,21 @@ import {CountService} from '../count.service';
 })
 export class AComponent implements OnInit {
   
-  //private _nocommon:boolean = false;
-  
+  private count:number;
+
   constructor(private countService:CountService){}
+
   
   ngOnInit() {
+    this.count = this.countService.value;
+    this.countService.changed.subscribe(counter => {this.count=counter.value;});
   }
   
-  increase(){this.countService.increment();}
-  decrease(){this.countService.decrement();}
-
-  /*@Input() set nocommon(b:boolean){ 
-      this._nocommon=b;
-      if (this._nocommon) this.countService = new CountService();
-  }*/
-  
-  get count():number {return this.countService.count;}
-
-
+  increase(){
+    this.countService.increment();
+  }
+  decrease(){
+    this.countService.decrement();
+  }
 
 }

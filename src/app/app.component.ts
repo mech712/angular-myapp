@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CountService } from './count.service';
+import { Counter } from './counter';
 
 
 
@@ -7,7 +8,7 @@ import { CountService } from './count.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[CountService]
+  providers:[CountService, Counter]
 })
 export class AppComponent {
   title = 'inf';
